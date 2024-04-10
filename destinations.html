@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+              <li><a href="travel.html">Home</a></li>
+              <li><a href="destinations.html">Destinations</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <div>
+          <label for="destination"></label>
+          <select type="text" id="destination" name="destination" placeholder="Enter destination.">
+            <option value="Atlanta">Atlanta</option>
+            <option value="Chattanooga">Chattanooga</option>
+            <option value="Nashville">Nashville</option>
+            <option value="Honduras">Honduras</option>
+          </select>
+          <p id="result"></p>
+      </div>
+
+      <div id="myDiv"></div>
+
+      <script>
+        // Get the dropdown element
+        const dropdown = document.getElementById("destination");
+        // Get the result paragraph element
+        const result = document.getElementById("result");
+
+        // Add event listener to the dropdown
+        dropdown.addEventListener("change", function() {
+            // Get the selected value
+            const selectedValue = dropdown.value;
+
+            switch (selectedValue) {
+                case "Atlanta":
+                    result.innerHTML = "Atlanta is an awesome city that I've actually been to <br> I went to the first Chick-Fil-A and the Coke factory";
+                    break;
+                case "Chattanooga":
+                    result.innerHTML = "I recently went to Chattanooga and visited Rock City.";
+                    break;
+                case "Nashville":
+                    result.innerHTML = "I have been to Nashville many of times, one of the times <br> I got to see my favorite football team the Kansas City Chiefs.";
+                    break;
+                case "Honduras":
+                  result.innerHTML = "I have been to Honduras on a mission trip in a city called <br> Comayagua."
+                  break;
+                default:
+                    result.innerHTML = "";
+            }
+        });
+    </script>
+</body>
+</html> 

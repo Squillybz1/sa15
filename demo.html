@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Map</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>// Sample data of locations and their coordinates
+        const locations = [
+            { name: 'Paris', coordinates: { lat: 48.8566, lng: 2.3522 }, date: '2023-05-10', description: 'Visited Eiffel Tower and Louvre Museum.' },
+            { name: 'Tokyo', coordinates: { lat: 35.6895, lng: 139.6917 }, date: '2023-07-20', description: 'Explored Shibuya and enjoyed authentic sushi.' },
+            // Add more locations as needed
+        ];
+        
+        // Function to initialize the map
+        function initMap() {
+            // Initialize map centered at a default location
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 3,
+                center: { lat: 0, lng: 0 }, // Default center
+            });
+        
+            // Loop through locations and add markers to the map
+            locations.forEach(location => {
+                const marker = new google.maps.Marker({
+                    position: location.coordinates,
+                    map: map,
+                    title: location.name
+                });
+        
+                // Create info window for each marker
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<h3>${location.name}</h3><p><strong>Date:</strong> ${location.date}</p><p><strong>Description:</strong> ${location.description}</p>`
+                });
+        
+                // Event listener to open info window when marker is clicked
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+        async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"</script>
+</body>
+</html>
